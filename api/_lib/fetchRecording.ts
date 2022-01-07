@@ -1,7 +1,7 @@
 import fetch from "cross-fetch";
 
 export default async function fetchRecording(id: string) {
-  const resp = await fetch("https://api.replay.io/v1/graphql", {
+  const resp = await fetch(process.env.NEXT_PUBLIC_API_SERVER!, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
