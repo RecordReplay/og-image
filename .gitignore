@@ -1,5 +1,6 @@
 .now
 .vercel
+.next
 node_modules
 api/dist
 public/dist
