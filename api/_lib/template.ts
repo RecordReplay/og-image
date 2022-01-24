@@ -1,15 +1,18 @@
+import { readFileSync } from "fs";
+import { ParsedRequest } from "./types";
 
-import { readFileSync } from 'fs';
-import { ParsedRequest } from './types';
-
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
+const rglr = readFileSync(
+  `${__dirname}/../_fonts/Inter-Regular.woff2`
+).toString("base64");
+const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString(
+  "base64"
+);
 
 function getCss() {
-    let background = 'white';
-    let foreground = 'black';
+  let background = "white";
+  let foreground = "#1F1F21";
 
-    return `
+  return `
     @font-face {
         font-family: 'Inter';
         font-style:  normal;
@@ -19,8 +22,7 @@ function getCss() {
 
     @font-face {
         font-family: 'Inter';
-        font-style:  normal;
-        font-weight: bold;
+        font-weight:  bold;
         src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
     }
 
@@ -41,16 +43,20 @@ function getCss() {
     }
 
     .title {
-        font-size: 64px;
+        font-size: 48px;
+        font-weight: bold;
         max-height: calc(64px * 3.6);
         -webkit-line-clamp: 3;
         overflow: hidden;
         -webkit-box-orient: vertical;
         display: -webkit-box;
+        margin-bottom: 40px;
     }
     
     .byline {
         font-size: 32px;
+        font-weight: normal;
+        color: #38383D;
     }
 
     .icon {
@@ -65,7 +71,7 @@ function getCss() {
     }
 
     .title, .byline {
-        margin-block-end: 20px;
+        margin-block-end: 10px;
     }
 
     img {
@@ -83,8 +89,8 @@ function getCss() {
 }
 
 export function getHtml(parsedReq: ParsedRequest) {
-    const { title, user, date, thumbnail } = parsedReq;
-    return `<!DOCTYPE html>
+  const { title, user, date, thumbnail } = parsedReq;
+  return `<!DOCTYPE html>
 <html>
     <meta charset="utf-8">
     <title>Generated Image</title>
